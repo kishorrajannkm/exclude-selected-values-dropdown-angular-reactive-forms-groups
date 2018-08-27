@@ -5,19 +5,19 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ExcludeSelectedValuePipe implements PipeTransform {
 
-  transform(fullArray: any, allSelected:any, currentSelection: any): any {
-    let newOptionsList = [];
-    for(let i = 0; i < fullArray.length; i++){
+  transform(fullArray, allSelected, currentSelection) {
+    let newOptionsList = []; 
+    fullArray.forEach(function (model) {
       let addToArray=true;
-      for(let j=0;j<allSelected.length;j++){
-        if(allSelected[j].mainKeyChosen===fullArray[i].mainKey){
-            addToArray=false;
+      allSelected.forEach(function (key) {
+        if(key.mainKeyChosen===model.mainKey){
+          addToArray=false;
         }
+      });
+      if(addToArray || model.mainKey === currentSelection){
+        newOptionsList.push(model);
       }
-      if(addToArray || fullArray[i].mainKey === currentSelection){
-        newOptionsList.push(fullArray[i]);
-      }
-    }
+    });
     return newOptionsList;
   }
 
