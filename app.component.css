@@ -1,1 +1,21 @@
 
+.options-container{
+    display:inline-block;
+    width:300px;
+    height: 30px;
+}
+.options-container select{
+    width: 150px;
+    height: 25px;
+}
+.sub-option-container{
+    display: inline-block;
+}
+.sub-option-container select{
+    width: 150px;
+    height: 25px;
+}
+.delete-button{
+    width: 150px;
+    height: 25px;
+}
