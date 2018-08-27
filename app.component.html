@@ -1,24 +1,23 @@
-
 <h3>Excluding Selected Values in the Dropdowns Added/Removed Dynamically</h3>
 <form [formGroup]="dynamicControlsForm">
   <div formArrayName="newFormControlArray">   
     <div *ngFor="let itemrow of dynamicControlsForm.controls.newFormControlArray.controls; let i=index"  [formGroupName]="i">
       <h4>Control #{{ i + 1 }}</h4>
-      <div style="display:inline-block; width:300px;height: 30px;">
-        <select (change)="changeMainKey(i);" style="width: 150px;height: 25px;" formControlName="mainKeyChosen">
+      <div class="options-container">
+        <select (change)="changeMainKey(i);" formControlName="mainKeyChosen">
           <option selected value=''>Options</option>
           <option *ngFor='let list of testArray | excludeSelectedValue : dynamicControlsForm.controls.newFormControlArray.value : dynamicControlsForm.controls.newFormControlArray.value[i]["mainKeyChosen"]'>{{ list.mainKey }}</option>
         </select>
-        <div style="display: inline-block;">
+        <div class="sub-option-container">
           <div *ngFor='let mainOption of testArray'>
-            <select *ngIf="mainOption.mainKey === dynamicControlsForm.controls.newFormControlArray.value[i].mainKeyChosen" style="width: 150px;height: 25px;" formControlName="subKeyChosen">
+            <select *ngIf="mainOption.mainKey === dynamicControlsForm.controls.newFormControlArray.value[i].mainKeyChosen" formControlName="subKeyChosen">
               <option selected value=''>Sub-options</option>
               <option *ngFor='let subKey of mainOption.subKeys'>Sub-option {{ subKey }}</option>
             </select>
           </div>
         </div>
       </div>
-      <button style="width: 150px;height: 25px;" [hidden]="!(dynamicControlsForm.controls.newFormControlArray.controls.length > 1 && dynamicControlsForm.controls.newFormControlArray.value[i].mainKeyChosen!=='')" (click)="deleteFormControl(i)">Delete Option</button>
+      <button class="delete-button" [hidden]="!(dynamicControlsForm.controls.newFormControlArray.controls.length > 1 && dynamicControlsForm.controls.newFormControlArray.value[i].mainKeyChosen!=='')" (click)="deleteFormControl(i)">Delete Option</button>
   </div>
 </div>
 <button type="button" *ngIf='dynamicControlsForm.controls.newFormControlArray.value.length<=3' (click)="addAnotherFormControl()">Add Another Option</button><br>
