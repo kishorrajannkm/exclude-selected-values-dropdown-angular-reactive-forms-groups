@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { IDropDownOptions } from './i-drop-down-options';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,23 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   public dynamicControlsForm: FormGroup;
-
+  public testArray : IDropDownOptions[]= [{
+	"mainKey": "Option A",
+	"subKeys": ["AA", "AB", "AC", "AD"]
+  },
+  {
+	"mainKey": "Option B",
+	"subKeys": ["BA", "BB", "BC", "BD"]
+  },
+  {
+	"mainKey": "Option C",
+	"subKeys": ["CA", "CB", "CC", "CD"]
+  },
+  {
+	"mainKey": "Option D",
+	"subKeys": ["DA", "DB", "DC", "DD"]
+  }];
+	
   constructor(private _fb: FormBuilder) { }
 
   ngOnInit() {
@@ -39,24 +56,5 @@ export class AppComponent implements OnInit {
     let newFormValues = this.dynamicControlsForm.controls['newFormControlArray'].value;
     this.dynamicControlsForm.controls['newFormControlArray'].setValue(newFormValues);
   }
-
-
-  public testArray = [{
-		"mainKey": "Option A",
-		"subKeys": ["AA", "AB", "AC", "AD"]
-	},
-	{
-		"mainKey": "Option B",
-		"subKeys": ["BA", "BB", "BC", "BD"]
-	},
-	{
-		"mainKey": "Option C",
-		"subKeys": ["CA", "CB", "CC", "CD"]
-	},
-	{
-		"mainKey": "Option D",
-		"subKeys": ["DA", "DB", "DC", "DD"]
-	}];
-
 
 }
