@@ -4,4 +4,4 @@ This Component is built basically to add and remove Form Controls using the Angu
 
 The main advantage of this component lies in exclusion of already selcted values from rest of the dropdowns. When a dropdown is selected with an option, the same option will not be available in the other dropdowns of the same form group. This mechanism is achieved using Angular Custom Pipes. The pipe here is named as "ExcludeSelectedValuePipe", which helps in the removal of already selected values. This component includes basic validation for adding and removing the Controls to the Form.
 
-Usage:  Copy and Paste the code form the files into your application and make the best use of it. All the Best !!!
+Usage:  Copy and Paste the code from the files into your application and make the best use of it. All the Best !!!
